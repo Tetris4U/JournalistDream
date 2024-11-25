@@ -1,0 +1,94 @@
+﻿body{
+    background-image: url("https://i.pinimg.com/originals/7e/00/d5/7e00d5cb87fa200918bc5b9e3309c1ff.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+
+}
+#title{
+    color: pink; 
+    background-color: white; 
+    font-size: 50px; 
+    text-align: center; 
+
+}
+
+textarea {
+    resize: none;
+    border-color: white;
+    border-style: solid;
+    height: 450px;
+    width: 450px;
+    font-size: 30px;
+   
+}
+
+#menu{
+    background-color:pink;
+    text-align: center;
+    color: hotpink;
+    font-size: 20px;
+    height:60px;
+    width: 80px;
+    border-radius: 25%;
+    margin-top: 2px;
+    top: 32px;
+    left: 5px;
+    position: absolute;
+    transition-timing-function: ease-out;
+
+}
+#menu:hover{
+ height: 200px;
+ width: 100px;
+
+}
+#history{
+ color: pink;
+ padding: 30px;
+ border-radius: 25%;
+ background-color: white;
+ font-size: 15px;
+ border-style: none;
+ right: 10px;
+ top: 100px;
+ position: absolute; 
+}
+#history:hover{
+background-color:hotpink;
+}
+#box{
+   background-color: white; 
+    height: 500px; 
+    width: 500px;
+    padding: 50px;
+    margin: auto;
+    border-radius: 25%; 
+}
+
+#submit{
+    padding: 30px;
+    border-style: none; 
+    border-radius: 25%;
+    background-color: white;
+    color: pink;
+    font-size: 15px;
+}
+#submit:hover{
+    background-color: hotpink; 
+    color: pink; 
+}
+#fName{
+    color: pink; 
+    border-color: hotpink;
+    top: 8px;
+    right: 36px;
+    position:relative;
+}
+#firstName{
+    color: hotpink ;
+    border-color: hotpink;
+    top: 8px;
+    right: 36px;
+    position:absolute;
+    
+}

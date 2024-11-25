@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="">
+    <head>
+        <title> All Your Dreams</title>
+
+
+    </head>
+    <body>
+<h1> All Your Dreams</h1>
+<div id = "displayFeeling">
+    <label id = "forName" for="name"> Enter your name:</label>
+    <input type ="text" id = "fname" name = "fname">
+    <script>
+        
+        
+        document.getElementById("fname").addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    
+                    displayName();
+                }
+            });
+        
+            function displayName() {
+                const fname = document.getElementById("fname").value;
+                document.getElementById("DisplayName").innerHTML = `Welcome ${fname} to your History`;
+           const displayFeeling = document.getElementById("displayFeeling");
+            }
+        
+         
+         
+
+    </script>
+</div>
+<div>
+    <h id = "DisplayName"> </h1>
+</div>
+</body
+
+    </body>
+</html>

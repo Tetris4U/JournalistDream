@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title> My Diary</title>
+    <link rel=" stylesheet" href="StyleSheet1.css" />
+</head>
+<body>
+    <h1 id="title">Your Dream</h1>
+    <div id = menu>
+    <p>Tool Box</p>
+     <!--<a href="">Vlog</a>
+     <a href="">History</a>
+     <a href="">Account</a>
+    -->
+    </div>
+    <script>
+        // for menu 
+        //trying to change the time the tool box opens 
+        /* remove event  make 3buttons*/
+        const menu = document.getElementById('menu');
+        let buttonCreated = false; 
+        function menuAction(){
+            if(!buttonCreated){
+
+            const firstButton = document.createElement('button');
+            firstButton.textContent = "vlog";
+            firstButton.style.position = "sticky";
+            
+            menu.appendChild(firstButton);
+            buttonCreated = true; 
+            
+            }
+        }
+        menu.addEventListener('mouseover', menuAction);
+    </script>
+    <button id = "history">Dream Book</button>
+    <script>
+        // to get to the dream book vlog 
+        // save data 
+     import React from 'react';
+     import {createRoot} from 'react-dom/client';
+     const history = document.getElementById("history");
+     function getNewpage(){
+        const text = document.getElementById("feel").value
+        const newPage = 'file:///C:/Users/tetri/source/repos/NodeConsoleApp1/forFeelings.html';
+        window.open(newPage, '_blank');
+        
+        
+     }
+    history.addEventListener( 'click', getNewpage);
+    const root = createRoot('history');
+
+
+
+    </script>
+
+    <div>
+        <div>
+            <div id="box">
+    <textarea id = "feel" name ="feel"></textarea>
+                
+            </div>
+        </div>
+    
+    </div>
+    <button id="submit">Save</button>
+    <script>
+        /* this can save data and send to other files*/
+        const submit = document.getElementById("submit");
+        function buttonPressed() {
+            const title = document.getElementById("title");
+            title.innerHTML = "Arianna Johnson Dreams";
+        }
+        submit.onclick = buttonPressed;
+
+
+    </script>
+   
+
+</body>
+
+</html>
