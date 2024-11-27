@@ -30,9 +30,15 @@
             
             menu.appendChild(firstButton);
             buttonCreated = true; 
-            
-            }
+               
         }
+            function exitMenu(){
+                if(firstButton){
+                    menu.removeChild(firstButton);
+                    buttonCreated = false;
+                }
+            }
+            menu.addEventListener('mouseout', exitMenu);
         menu.addEventListener('mouseover', menuAction);
         
     </script>
