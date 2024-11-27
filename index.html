@@ -19,7 +19,7 @@
         // for menu 
         //trying to change the time the tool box opens 
         /* remove event  make 3buttons*/
-        const menu = document.getElementById('menu');
+       /* const menu = document.getElementById('menu');
         let buttonCreated = false; 
         function menuAction(){
             if(!buttonCreated){
@@ -38,8 +38,36 @@
                     buttonCreated = false;
                 }
             }
+            
             menu.addEventListener('mouseout', exitMenu);
         menu.addEventListener('mouseover', menuAction);
+        */
+let buttonCreated = false;
+const menu = document.getElementById('menu'); // Assuming there's a menu element
+
+function menuAction() {
+    if (!buttonCreated) {
+        const firstButton = document.createElement('button');
+        firstButton.textContent = "vlog";
+        firstButton.style.position = "sticky";
+        firstButton.style.top = '0';  // Ensuring it stays at the top
+        menu.appendChild(firstButton);
+        buttonCreated = true;
+
+        // Optional: Automatically remove button when the mouse leaves the menu
+        menu.addEventListener('mouseout', () => {
+            if (firstButton) {
+                menu.removeChild(firstButton);
+                buttonCreated = false;
+            }
+        });
+    }
+}
+
+menu.addEventListener('mouseover', menuAction);
+
+
+
         
     </script>
     <button id = "history">Dream Book</button>
