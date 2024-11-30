@@ -1,0 +1,22 @@
+{
+  "name": "firstproject",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tetris4U/firstProject.git"
+  },
+  "author": "\"Arianna Johnson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tetris4U/firstProject/issues"
+  },
+  "homepage": "https://github.com/Tetris4U/firstProject#readme",
+  "description": "",
+  "devDependencies": {
+    "mocha": "^10.8.2"
+  }
+}
