@@ -8,5 +8,5 @@ function constClockRunning(){
     document.getElementById('clock').textContent = timeString;
    }
 
-   setInterval(updateClock, 1000);
+   setInterval(constClockRunning, 1000);
    constClockRunning(); 
