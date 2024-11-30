@@ -4,6 +4,10 @@
     background-size:cover;
 
 }
+#clock{
+    color: "hotpink";
+    font-weight: 50px;
+}
 #title{
     color: pink; 
     background-color: white; 
