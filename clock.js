@@ -1,3 +1,9 @@
+import React from 'react';
+import {createRoot} from 'recat-dom/client';
+
+const clock = document.getElementById('clock');
+
+
 function constClockRunning(){
     const now = new Date();
     const hours = now.getHours().toString().padStart(2, '0');
