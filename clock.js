@@ -5,8 +5,13 @@ function constClockRunning(){
     const seconds = now.getSeconds().toString().padStart(2, '0');
     const timeString = `${hours}:${minutes}:${seconds}`;
     
-    document.getElementById('clock').textContent = timeString;
+    document.getElementById('clock').textContent = timeString
+    timeString.style.color('pink');
+    timeString.style.fontWeight("20px");
+    
    }
+   // I'm going to try to give style 
+   // css --rm- data 
 
    setInterval(constClockRunning, 1000);
    constClockRunning(); 
