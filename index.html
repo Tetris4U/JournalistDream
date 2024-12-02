@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -25,7 +25,20 @@
              
 let buttonCreated = false;
 const menu = document.getElementById('menu'); // Assuming there's a menu element
+// test part 
+const allButtons = ["Vlog","History", "Account",]
 
+function makeButtons(){
+   const myMenu =  document.getElementById('menu');
+   const miniButtons = document.createElement('button');
+   miniButtons.style.backgroundColor('pink');
+   myMenu.appendChild('miniButtons');
+   myMenu.textContent = 
+
+
+}
+allButtons.forEach(makeButtons);
+// end test 
 function menuAction() {
     if (!buttonCreated) {
         const firstButton = document.createElement('button');
