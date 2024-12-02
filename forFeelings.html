@@ -7,34 +7,25 @@
     </head>
     <body>
 <h1> All Your Dreams</h1>
-<div id = "displayFeeling">
-    <label id = "forName" for="name"> Enter your name:</label>
-    <input type ="text" id = "fname" name = "fname">
+<div id = "logPage">
+    
     <script>
-        
-        
-        document.getElementById("fname").addEventListener('keydown', function(event) {
-                if (event.key === 'Enter') {
-                    
-                    displayName();
-                }
-            });
-        
-            function displayName() {
-                const fname = document.getElementById("fname").value;
-                document.getElementById("DisplayName").innerHTML = `Welcome ${fname} to your History`;
-           const displayFeeling = document.getElementById("displayFeeling");
-            }
-        
-         
-         
-
+     import React from 'react';
+     import {createRoot} from 'react-dom/client';
+     const logPage = document.getElementById("logPage");
+     const root = createRoot(logPage);
+    
+     
+     const wholePage = (
+        <div>
+        <label for = 'name' id = 'name'> Enter name: </label>
+        <input type = 'text' id = "forname"/>
+        </div>
+     );
+     root.render(wholePage);
     </script>
 </div>
-<div>
-    <h id = "DisplayName"> </h1>
-</div>
-</body
+
 
     </body>
 </html>
