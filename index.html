@@ -8,8 +8,6 @@
 
     <script src ="clock.js"></script>
 
-    <script src = "clock.js"></script>
-
 </head>
 <body>
     <h1 id="title">Your Dream</h1>
@@ -18,19 +16,11 @@
 <div id = "clock">
     
 </div>
-
-    <!--lets make a clock in js-->
-    <div id = "clock">
          
     </div>
 
     <div id = menu>
     <p>Tool Box</p>
-     <!--<a href="">Vlog</a>
-     <a href="">History</a>
-     <a href="">Account</a>
-     <a href="">detail</a>
-    -->
     </div>
     <script>
        let noButtonMade = true; // Declare the flag outside the function to preserve state
@@ -93,31 +83,14 @@ if(menu){
     menu.addEventListener('mouseover', makeButtons);  // Create buttons on hover
     menu.addEventListener('mouseout', removeButtons); // Remove buttons when mouse leaves
 
+
 }
-    
+     </script>
 
-
-
-
-        
-    </script>
-    <button id = "history">Dream Book</button>
+    <button type="button" id = "history">Dream Book</button>
     <script>
-        // to get to the dream book vlog 
-        // save data 
-     import React from 'react';
-     import {createRoot} from 'react-dom/client';
-     const history = document.getElementById("history");
-     function getNewpage(){
-        const text = document.getElementById("feel").value
-        const newPage = 'https://tetris4u.github.io/firstProject/forFeelings.html';
-        window.open(newPage, '_blank');
-        
-        
-     }
-    history.addEventListener( 'click', getNewpage);
-    const root = createRoot('history');
-
+    const bookButton = document.getElementById("history");
+    
 
 
     </script>
@@ -125,9 +98,29 @@ if(menu){
     <div>
         <div>
             <div id="box">
-    <textarea id = "feel" name ="feel"></textarea>
+            <!-- missing label-->
+             <label for = "feel" id = "labelForFeelings">Your Feelings matter</label>
+    <textarea  id = "feel" name ="feel"></textarea>
                 
             </div>
+            <script>
+                import React from 'react';
+                import { createRoot} from 'react-dom/client';
+                const container = document.getElementById('box');
+                const root = createRoot(container);
+                const myFeelings = document.getElementById('feel');
+                function createTextAraea(){
+                    return (
+                        <label>
+
+                        <textarea id={usersFellings} name= "usersFeelings" rows={1500} cols={1500}/>
+
+                       </label>
+                    );
+                }
+
+
+            </script>
         </div>
     
     </div>
