@@ -23,6 +23,10 @@ textarea {
    
 }
 
+textarea:focus {
+ outline: none; 
+}
+
 #menu{
     background-color:pink;
     text-align: center;
