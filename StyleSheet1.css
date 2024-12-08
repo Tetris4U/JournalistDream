@@ -16,6 +16,10 @@
     text-align: center; 
 
 }
+#labelForFeelings{
+    color: pink;
+    font-size: 6px;
+}
 
 textarea {
     resize: none;
