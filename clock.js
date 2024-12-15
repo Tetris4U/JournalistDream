@@ -22,9 +22,8 @@ function constClockRunning() {
     const timeString = `${hours}:${minutes}:${seconds} ${ampm}`;
 
     // Update the clock with the formatted time string
-    clock.textContent = timeString;
-    console.log(timeString);
-
+    clock.innerHTML = timeString;
+   
     // Apply styles to the clock element
     clock.style.color = 'pink'; // Set text color to pink
     clock.style.fontWeight = 'bold'; // Set font weight to bold
@@ -35,5 +34,6 @@ function constClockRunning() {
 }
 
 // Start the clock
+// nothing diff 
 setInterval(constClockRunning, 1000);
 
