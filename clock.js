@@ -36,4 +36,4 @@ function constClockRunning() {
 
 // Start the clock
 setInterval(constClockRunning, 1000);
-constClockRunning();
+
