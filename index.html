@@ -9,7 +9,7 @@
     <script src ="clock.js"></script>
 
 </head>
-<body>
+<body id = "firstPage">
     <h1 id="title">Your Dream</h1>
 
     <!--lets make a clock in js-->
@@ -89,6 +89,20 @@ if(menu){
 
     <button type="button" id = "history">Dream Book</button>
     <script>
+         const story = document.getElementById("history");
+
+        function makeNewPage(){
+           const save = document.getElementById("submit");
+           const myBox = document.getElementById("box");
+           const theTitle = document.getElementById("title");
+           const firstPage = document.getElementById("firstPage");
+           firstpage.removeChild(save);
+           firstpage.removeChild(myBox);
+           firstPage.removeChild(theTitle);
+
+        }
+        story.onclick(makeNewPage); 
+
     const bookButton = document.getElementById("history");
     bookButton.onclick(newpage)
         function newpage(){
