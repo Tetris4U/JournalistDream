@@ -102,12 +102,12 @@ if(menu){
            firstPage.removeChild(theTitle);
 
         }
-        story.onclick(makeNewPage); 
+    story.onclick = makeNewPage; 
 
     const bookButton = document.getElementById("history");
     bookButton.onclick(newpage)
         function newpage(){
-            location.replace("https://tetris4u.github.io/historyForDiary/")
+            location.replace("formindex.html");
         }
     </script>
 
