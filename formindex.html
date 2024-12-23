@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel=" stylesheet" href="formindexStyle.css"/>
-  <title>Make a login</title>
+  <link rel="stylesheet" href="formindexStyle.css" />
+  <title>Registration Form</title>
   <script>
     // JavaScript function to handle form submission and validation
-    function validateForm() {
+    async function validateForm(event) {
+      event.preventDefault(); // Prevent form from submitting normally
+
       // Get form values
       const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
@@ -26,31 +28,56 @@
         return false;
       }
 
-      // If all validations pass, display data
-      alert(`Form submitted successfully!\nName: ${name}\nEmail: ${email}\nAge: ${age}`);
-      return false; // Prevent actual form submission for demonstration
+      // Prepare data to be sent
+      const infoData = {
+        name: name,
+        email: email,
+        age: age
+      };
+
+      try {
+        // Sending the data to the server using fetch
+        const response = await fetch('formindex.html', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(infoData)
+        });
+
+        // Check if the request was successful
+        if (response.ok) {
+          const responseForData = await response.json();
+          alert(`Account created successfully! Welcome, ${responseForData.name}`);
+        } else {
+          alert('An error occurred while creating your account');
+        }
+      } catch (error) {
+        // Handle any errors with the request
+        alert("There was an error with the request.");
+      }
+
+      return false; // Prevent the form from submitting normally
     }
   </script>
 </head>
 <body>
 
   <h2>Registration Form</h2>
-  <div id = "prettyBox">
-  <form onsubmit="return validateForm()">
-    <label for="name">Full Name:</label><br>
-    <input type="text" id="name" name="name"><br><br>
+  <div id="prettyBox">
+    <form id="registrationForm" onsubmit="validateForm(event)">
+      <label for="name">Full Name:</label><br>
+      <input type="text" id="name" name="name"><br><br>
 
-    <label for="email">Email Address:</label><br>
-    <input type="email" id="email" name="email"><br><br>
+      <label for="email">Email Address:</label><br>
+      <input type="email" id="email" name="email"><br><br>
 
-    <label for="age">Age:</label><br>
-    <input type="number" id="age" name="age"><br><br>
+      <label for="age">Age:</label><br>
+      <input type="number" id="age" name="age"><br><br>
 
-    <input type="submit" value="Submit">
-  </form>
+      <input type="submit" value="Submit">
+    </form>
   </div>
-  </body>
 
 </body>
 </html>
-
