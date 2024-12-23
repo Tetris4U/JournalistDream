@@ -1,22 +1,52 @@
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title> My Diary History</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Form with JavaScript</title>
+  <script>
+    // JavaScript function to handle form submission and validation
+    function validateForm() {
+      // Get form values
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const age = document.getElementById("age").value;
+
+      // Simple validation checks
+      if (name === "" || email === "" || age === "") {
+        alert("Please fill in all fields.");
+        return false;
+      }
+
+      // Check if email format is correct
+      const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+      if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+
+      // If all validations pass, display data
+      alert(`Form submitted successfully!\nName: ${name}\nEmail: ${email}\nAge: ${age}`);
+      return false; // Prevent actual form submission for demonstration
+    }
+  </script>
 </head>
 <body>
-<form  method = "post"
-action = <!--no link--></form>
-<label for = "name"> Enter your Name: </label>
-<input tye = "text" name = "name" id = "name">
 
-<label for = "password"> Enetr your password: </label>
-<input type="password" password = "password" id = "pwd">
+  <h2>Registration Form</h2>
+  <form onsubmit="return validateForm()">
+    <label for="name">Full Name:</label><br>
+    <input type="text" id="name" name="name"><br><br>
 
+    <label for="email">Email Address:</label><br>
+    <input type="email" id="email" name="email"><br><br>
 
-<label for =  "Email">Enter Your email: </label>
-<input type = 'text' mail = "mail" id = "email">
-</form>
+    <label for="age">Age:</label><br>
+    <input type="number" id="age" name="age"><br><br>
 
+    <input type="submit" value="Submit">
+  </form>
 
 </body>
-    
+</html>
+
