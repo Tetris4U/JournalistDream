@@ -1,5 +1,56 @@
 body{
-    background-image: url("https://img.freepik.com/premium-photo/fantasy-sky-rainbow-fairy-skies-rainbows-colors-magic-landscape-dream-sky-generate-ai_740533-8530.jpg");
+    background-image: url("https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAyL3Jhd3BpeGVsX29mZmljZV81NF9hX3NreV9maWxsZWRfd2l0aF9jbG91ZHNfYW5kX3N0YXJzX21hZGVfb2ZfY181ZTQ3ZjNkMy05NmZiLTQzZmYtYTAxNy00NmM4ODg4MWJlYTBfMS5qcGc.jpg");
     background-repeat: no-repeat;
     background-size:cover;
+}
+#prettyBox{
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: auto;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    height: 480px;
+    width: 480px;
+    text-align: center;
+}
+#prettyBox:hover{
+    border-color: plum;
+    border-style: groove;
+}
+.pretty{
+    border-radius: 10px;
+    margin: auto;
+    padding: 20px;
+    border-color: plum;
+}
+.label{
+    margin: auto;
+    position:static;
+    font-size: 20px;
+
+}
+#submit{
+    background-color: plum;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    width: 100px;
+    margin: auto;
+}
+#submit:hover{
+    background-color: white;
+    color: plum;
+    border-color: plum;
+}
+#title{
+    color: plum; 
+    font-size: 25px; 
+    text-align: center; 
+}
+#title:hover{
+    color: white; 
+    
 }
