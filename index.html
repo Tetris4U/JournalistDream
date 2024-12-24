@@ -4,11 +4,10 @@
 <head>
     <meta charset="utf-8" />
     <title> My Diary</title>
-    <link rel=" stylesheet" href="StyleSheet1.css" />
 
-    <script src ="clock.js"></script>
-
-</head>
+<link rel=" stylesheet" href="StyleSheet1.css" />-   
+ <script src ="clock.js"></script>
+ </head>
 <body id = "firstPage">
     <h1 id="title">Your Dream</h1>
 
@@ -16,7 +15,6 @@
 <div id = "clock">
     
 </div>
-         
     </div>
 
     <div id = menu>
@@ -32,6 +30,7 @@ function makeButtons() {
         // Create buttons 
         const Vlog = document.createElement('button');
         const History = document.createElement('button');
+        History.id = "history";
         const Account = document.createElement('button');
         // Set text for buttons
         Vlog.innerText = 'Vlog';
@@ -84,6 +83,10 @@ if(menu){
     menu.addEventListener('mouseout', removeButtons); // Remove buttons when mouse leaves
 
 
+}
+history.onclick = HistoryPage;
+function HistoryPage(){
+    location.replace("history.html");
 }
      </script>
 
