@@ -29,9 +29,11 @@ function makeButtons() {
 
         // Create buttons 
         const Vlog = document.createElement('button');
+        Vlog.id = "vlog";
         const History = document.createElement('button');
         History.id = "history";
         const Account = document.createElement('button');
+        Account.id = "account";
         // Set text for buttons
         Vlog.innerText = 'Vlog';
         History.innerText = 'History';
@@ -83,6 +85,10 @@ if(menu){
     menu.addEventListener('mouseout', removeButtons); // Remove buttons when mouse leaves
 
 
+}
+Account.onclick = AccountPage;
+function AccountPage(){
+    location.replace("formindex.html");
 }
 history.onclick = HistoryPage;
 function HistoryPage(){
