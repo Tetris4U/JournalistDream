@@ -3,6 +3,19 @@ body{
     background-repeat: no-repeat;
     background-size:cover;
 }
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Show buttons */
+.visible {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
 #prettyBox{
     background-color: white;
     border-radius: 10px;

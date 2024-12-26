@@ -18,7 +18,7 @@
     <p>Tool Box</p>
     </div>
     <script>
-          let noButtonMade = true; // Declare the flag outside the function to preserve state
+         let noButtonMade = true; // Declare the flag outside the function to preserve state
 
 // Create buttons inside the menu
 function makeButtons() {
@@ -43,7 +43,7 @@ function makeButtons() {
         myMenu.appendChild(History);
         myMenu.appendChild(Account);
 
-        // Add the hidden class initially to hide buttons
+        // Set the buttons to be hidden initially
         Vlog.classList.add('hidden');
         History.classList.add('hidden');
         Account.classList.add('hidden');
@@ -67,13 +67,15 @@ function showButtons() {
     });
 }
 
-// Hide buttons when mouse leaves the menu
-function hideButtons() {
+// Remove buttons when mouse leaves the menu
+function removeButtons() {
     const buttons = document.querySelectorAll('#menu button');
     buttons.forEach(button => {
         button.classList.remove('visible');
         button.classList.add('hidden');
     });
+    // Reset flag to allow button recreation on next hover
+    noButtonMade = true;
 }
 
 // Add event listeners for hover
@@ -83,7 +85,7 @@ if (menu) {
         makeButtons();  // Ensure buttons are created before showing them
         showButtons();  // Show buttons when hovering
     });
-    menu.addEventListener('mouseout', hideButtons); // Hide buttons when mouse leaves
+    menu.addEventListener('mouseout', removeButtons); // Remove buttons when mouse leaves
 }
 
 // Handle the "Save" button click to save feelings
