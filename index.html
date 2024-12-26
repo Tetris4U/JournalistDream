@@ -11,9 +11,6 @@
 <body id = "firstPage">
     <h1 id="title">Your Dream</h1>
 
-    <!--lets make a clock in js-->
-<div id = "clock">
-    
 </div>
     </div>
 
@@ -23,77 +20,84 @@
     <script>
        let noButtonMade = true; // Declare the flag outside the function to preserve state
 
+// Create buttons inside the menu
 function makeButtons() {
     if (noButtonMade) {
         const myMenu = document.getElementById('menu');
 
-        // Create buttons 
+        // Create buttons
         const Vlog = document.createElement('button');
         Vlog.id = "vlog";
         const History = document.createElement('button');
         History.id = "history";
         const Account = document.createElement('button');
         Account.id = "account";
+
         // Set text for buttons
         Vlog.innerText = 'Vlog';
         History.innerText = 'History';
         Account.innerText = 'Account';
-        // style 
-        Vlog.style.color = "pink";
-        History.style.color ="pink";
-        Account.style.color = "pink";
-        Vlog.style.backgroundColor = "white";
-        History.style.backgroundColor = "white";
-        Account.style.backgroundColor = "white";
-        Vlog.style.borderRadius = "25px";
-        Vlog.style.padding = "5px";
-        Vlog.style.borderStyle =  "none";
-        History.style.borderRadius = "25px";
-        History.style.padding = "5px";
-        History.style.borderStyle =  "none";
-        Account.style.borderRadius = "25px";
-        Account.style.padding = "5px";
-        Account.style.borderStyle =  "none";
 
         // Append buttons to the menu
         myMenu.appendChild(Vlog);
         myMenu.appendChild(History);
         myMenu.appendChild(Account);
 
+        // Style buttons
+        styleButtons(Vlog, History, Account);
+
         // Set flag to false to prevent creating buttons again
         noButtonMade = false;
+
+        // Add click event listeners for the buttons
+        Vlog.onclick = () => window.location.replace("vlog.html");
+        History.onclick = () => window.location.replace("history.html");
+        Account.onclick = () => window.location.replace("formindex.html");
     }
 }
 
+// Function to style buttons (DRY principle)
+function styleButtons(Vlog, History, Account) {
+    [Vlog, History, Account].forEach(button => {
+        button.style.color = "pink";
+        button.style.backgroundColor = "white";
+        button.style.borderRadius = "25px";
+        button.style.padding = "5px";
+        button.style.border = "none";
+    });
+}
+
+// Remove buttons from the menu
 function removeButtons() {
     const myMenu = document.getElementById('menu');
-
-    // Check if the menu has buttons and remove them
     const buttons = myMenu.querySelectorAll('button');
     buttons.forEach(button => {
         button.remove();
     });
-
     // Set flag back to true to allow button creation on the next hover
     noButtonMade = true;
 }
 
-// Make sure the menu element exists before adding event listeners
+// Add event listeners for hover
 const menu = document.getElementById('menu');
-if(menu){
+if (menu) {
     menu.addEventListener('mouseover', makeButtons);  // Create buttons on hover
     menu.addEventListener('mouseout', removeButtons); // Remove buttons when mouse leaves
+}
 
+// Handle the "Save" button click to save feelings
+const submit = document.getElementById("submit");
+submit.onclick = function() {
+    const feelings = document.getElementById("feel").value;
+    if (feelings) {
+        alert("Your feelings have been saved: " + feelings);
+        // Optionally, save it to localStorage or send it to a server
+        // localStorage.setItem("feelings", feelings);
+    } else {
+        alert("Please enter your feelings before saving.");
+    }
+};
 
-}
-Account.onclick = AccountPage;
-function AccountPage(){
-    location.replace("formindex.html");
-}
-history.onclick = HistoryPage;
-function HistoryPage(){
-    location.replace("history.html");
-}
      </script>
 
     <button type="button" id = "history">Dream Book</button>
@@ -115,22 +119,7 @@ function HistoryPage(){
                 
             </div>
             <script>
-                import React from 'react';
-                import { createRoot} from 'react-dom/client';
-                const container = document.getElementById('box');
-                const root = createRoot(container);
-                const myFeelings = document.getElementById('feel');
-                function createTextAraea(){
-                    return (
-                        <label>
-
-                        <textarea id={usersFellings} name= "usersFeelings" rows={1500} cols={1500}/>
-
-                       </label>
-                    );
-                }
-
-
+                
             </script>
         </div>
     
