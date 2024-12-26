@@ -119,30 +119,32 @@ submit.onclick = function() {
     </div>
     <button id="submit">submit</button>
     <script>
-        /* this can save data and send to other files*/
-   // Handle the "Save" button click to save feelings and redirect to the history page
-const submit = document.getElementById("submit");
-submit.onclick = function() {
+       let feelingsArray = JSON.parse(localStorage.getItem("feelingsArray")) || [];
+
+// Handle the "Save" button click to save feelings data
+const submitButton = document.getElementById("submit");
+submitButton.onclick = function() {
     const feelings = document.getElementById("feel").value;
+
     if (feelings) {
-        // Save the feelings data in localStorage
-        localStorage.setItem("feelings", feelings);
-        
-    
+        // Push the new feeling to the array
+        feelingsArray.push(feelings);
+
+        // Save the updated array in localStorage
+        localStorage.setItem("feelingsArray", JSON.stringify(feelingsArray));
+
+        // Optionally show a confirmation message
         alert("Your feelings have been saved!");
 
-        // Redirect to the history page
+        // Clear the textarea for new input
+        document.getElementById("feel").value = '';
+
+        // Redirect to the history page to view all feelings
         window.location.replace("history.html");
     } else {
-       const theTitle =  document.getElementById("title").innerHTML = `Please enter your feelings before saving.`;
-
-    }
-    if(feelings == ""){
         alert("Please enter your feelings before saving.");
     }
 };
-
-
     </script>
    
 
