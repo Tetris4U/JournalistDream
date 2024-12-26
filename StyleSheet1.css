@@ -3,6 +3,16 @@
     background-repeat: no-repeat;
     background-size:cover;
 
+
+}
+.menuButton{
+    background-color: white;
+    border-radius: 25px;
+    padding: 5px;
+    border: none;
+    margin: 5px;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    visibility: hidden; 
 }
 #labelForFeelings{
     font-size: 6px;

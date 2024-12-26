@@ -18,18 +18,18 @@
     <p>Tool Box</p>
     </div>
     <script>
-         let noButtonMade = true; // Declare the flag outside the function to preserve state
+       let buttonsCreated = false; // Flag to check if buttons are already created
 
 // Create buttons inside the menu
-function makeButtons() {
-    if (noButtonMade) {
+function createButtons() {
+    if (!buttonsCreated) {
         const myMenu = document.getElementById('menu');
 
         // Create buttons
         const Vlog = document.createElement('button');
         Vlog.id = "vlog";
         const History = document.createElement('button');
-        History.id = "history";
+        History.id = "story";
         const Account = document.createElement('button');
         Account.id = "account";
 
@@ -43,13 +43,8 @@ function makeButtons() {
         myMenu.appendChild(History);
         myMenu.appendChild(Account);
 
-        // Set the buttons to be hidden initially
-        Vlog.classList.add('hidden');
-        History.classList.add('hidden');
-        Account.classList.add('hidden');
-
-        // Set flag to false to prevent creating buttons again
-        noButtonMade = false;
+        // Set flag to true to prevent recreating buttons
+        buttonsCreated = true;
 
         // Add click event listeners for the buttons
         Vlog.onclick = () => window.location.replace("vlog.html");
@@ -62,30 +57,26 @@ function makeButtons() {
 function showButtons() {
     const buttons = document.querySelectorAll('#menu button');
     buttons.forEach(button => {
-        button.classList.remove('hidden');
-        button.classList.add('visible');
+        button.style.visibility = 'visible'; // Show the buttons
     });
 }
 
-// Remove buttons when mouse leaves the menu
-function removeButtons() {
+// Hide buttons when mouse leaves the menu
+function hideButtons() {
     const buttons = document.querySelectorAll('#menu button');
     buttons.forEach(button => {
-        button.classList.remove('visible');
-        button.classList.add('hidden');
+        button.style.visibility = 'hidden'; // Hide the buttons
     });
-    // Reset flag to allow button recreation on next hover
-    noButtonMade = true;
 }
 
 // Add event listeners for hover
 const menu = document.getElementById('menu');
 if (menu) {
     menu.addEventListener('mouseover', function() {
-        makeButtons();  // Ensure buttons are created before showing them
+        createButtons();  // Create and show buttons on hover
         showButtons();  // Show buttons when hovering
     });
-    menu.addEventListener('mouseout', removeButtons); // Remove buttons when mouse leaves
+    menu.addEventListener('mouseout', hideButtons); // Hide buttons when mouse leaves
 }
 
 // Handle the "Save" button click to save feelings
