@@ -15,15 +15,24 @@
     </div>
     
     <script>
-        // Retrieve the feelings from localStorage
-        const feelings = localStorage.getItem("feelings");
+         const feelingsArray = JSON.parse(localStorage.getItem("feelingsArray")) || [];
 
-        // If feelings exist in localStorage, display them
-        if (feelings) {
-            document.getElementById("feelingsContent").innerText = feelings;
-        } else {
-            document.getElementById("feelingsContent").innerText = "No feelings data found.";
-        }
+// Get the div where we want to display the feelings
+const feelingsContentDiv = document.getElementById("feelingsContent");
+
+// Check if the feelingsArray is not empty
+if (feelingsArray.length > 0) {
+    // Loop through the array and display each feeling
+    feelingsArray.forEach((feeling, index) => {
+        // Create a paragraph for each feeling and append it to the content div
+        const feelingPara = document.createElement("p");
+        feelingPara.innerText = `${index + 1}. ${feeling}`;
+        feelingsContentDiv.appendChild(feelingPara);
+    });
+} else {
+    // If no feelings data is found, display a default message
+    feelingsContentDiv.innerText = "No feelings data found.";
+}
     </script>
 
 
