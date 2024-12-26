@@ -18,7 +18,7 @@
     <p>Tool Box</p>
     </div>
     <script>
-       let noButtonMade = true; // Declare the flag outside the function to preserve state
+        let noButtonMade = true; // Declare the flag outside the function to preserve state
 
 // Create buttons inside the menu
 function makeButtons() {
@@ -38,13 +38,18 @@ function makeButtons() {
         History.innerText = 'History';
         Account.innerText = 'Account';
 
-        // Append buttons to the menu
+        // Add buttons to the menu
         myMenu.appendChild(Vlog);
         myMenu.appendChild(History);
         myMenu.appendChild(Account);
 
         // Style buttons
         styleButtons(Vlog, History, Account);
+
+        // Add the hidden class initially to hide buttons
+        Vlog.classList.add('hidden');
+        History.classList.add('hidden');
+        Account.classList.add('hidden');
 
         // Set flag to false to prevent creating buttons again
         noButtonMade = false;
@@ -67,22 +72,29 @@ function styleButtons(Vlog, History, Account) {
     });
 }
 
-// Remove buttons from the menu
-function removeButtons() {
-    const myMenu = document.getElementById('menu');
-    const buttons = myMenu.querySelectorAll('button');
+// Show buttons when mouse is over the menu
+function showButtons() {
+    const buttons = document.querySelectorAll('#menu button');
     buttons.forEach(button => {
-        button.remove();
+        button.classList.remove('hidden');
+        button.classList.add('visible');
     });
-    // Set flag back to true to allow button creation on the next hover
-    noButtonMade = true;
+}
+
+// Hide buttons when mouse leaves the menu
+function hideButtons() {
+    const buttons = document.querySelectorAll('#menu button');
+    buttons.forEach(button => {
+        button.classList.remove('visible');
+        button.classList.add('hidden');
+    });
 }
 
 // Add event listeners for hover
 const menu = document.getElementById('menu');
 if (menu) {
-    menu.addEventListener('mouseover', makeButtons);  // Create buttons on hover
-    menu.addEventListener('mouseout', removeButtons); // Remove buttons when mouse leaves
+    menu.addEventListener('mouseover', showButtons);  // Show buttons on hover
+    menu.addEventListener('mouseout', hideButtons); // Hide buttons when mouse leaves
 }
 
 // Handle the "Save" button click to save feelings
@@ -97,7 +109,6 @@ submit.onclick = function() {
         alert("Please enter your feelings before saving.");
     }
 };
-
      </script>
 
     <button type="button" id = "history">Dream Book</button>
