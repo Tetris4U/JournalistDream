@@ -15,8 +15,12 @@
     </div>
     
     <script>
+<<<<<<< HEAD
           // Retrieve the feelings array from localStorage, or initialize it as an empty array
     const feelingsArray = JSON.parse(localStorage.getItem("feelingsArray")) || [];
+=======
+         const feelingsArray = JSON.parse(localStorage.getItem("feelingsArray")) || [];
+>>>>>>> 779e4e8 (done)
 
 // Get the div where we want to display the feelings
 const feelingsContentDiv = document.getElementById("feelingsContent");
@@ -28,19 +32,26 @@ if (feelingsArray.length > 0) {
         // Create a paragraph for each feeling and append it to the content div
         const feelingPara = document.createElement("p");
         feelingPara.innerText = `${index + 1}. ${feeling}`;
+<<<<<<< HEAD
 
         // Add the "feelStyle" class to the feeling paragraph
         feelingPara.classList.add("feelStyle");
 
         // Append the feeling paragraph to the content div
+=======
+>>>>>>> 779e4e8 (done)
         feelingsContentDiv.appendChild(feelingPara);
     });
 } else {
     // If no feelings data is found, display a default message
     feelingsContentDiv.innerText = "No feelings data found.";
 }
+<<<<<<< HEAD
 feelingsArray.forEach(document.createElement("div").class = "feelStyle");
    </script>
+=======
+    </script>
+>>>>>>> 779e4e8 (done)
 
 
 

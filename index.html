@@ -108,18 +108,20 @@ submit.onclick = function() {
             <div id="box">
             <!-- missing label-->
              <label for = "feel" id = "labelForFeelings">Your Feelings matter</label>
-    <textarea  id = "feel" name ="feel"></textarea>
+             <textarea  id = "feel" name ="feel"></textarea>
                 
             </div>
-            <script>
-                
-            </script>
+            
         </div>
     
     </div>
-    <button id="submit">submit</button>
+    <button type ="button" id="submit">submit</button>
     <script>
+<<<<<<< HEAD
        let feelingsArray = JSON.parse(localStorage.getItem("feelingsArray")) || [];
+=======
+           let feelingsArray = JSON.parse(localStorage.getItem("feelingsArray")) || [];
+>>>>>>> 779e4e8 (done)
 
 // Handle the "Save" button click to save feelings data
 const submitButton = document.getElementById("submit");
