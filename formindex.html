@@ -6,10 +6,10 @@
   <link rel="stylesheet" href="formindexStyle.css" />
   <title>Registration Form</title>
   <script>
-    // JavaScript function to handle form submission and validation
-    async function validateForm(event) {
-      event.preventDefault(); // Prevent form from submitting normally
-
+    // user list 
+    const users = [];
+      // JavaScript function to handle form submission and validation
+      function validateForm() {
       // Get form values
       const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
@@ -28,38 +28,20 @@
         return false;
       }
 
-      // Prepare data to be sent
-      const infoData = {
-        name: name,
-        email: email,
-        age: age
-      };
-
-      try {
-        // Sending the data to the server using fetch
-        const response = await fetch('index.html', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(infoData)
-        });
-
-        // Check if the request was successful
-        if (response.ok) {
-          const responseForData = await response.json();
-          alert(`Account created successfully! Welcome, ${responseForData.name}`);
-          
-        } else {
-          alert('An error occurred while creating your account');
-        }
-      } catch (error) {
-        // Handle any errors with the request
-        alert("There was an error with the request.");
-      }
-
-      return false; // Prevent the form from submitting normally
+      // If all validations pass, display data
+      alert(`Form submitted successfully!\nName: ${name}\nEmail: ${email}\nAge: ${age}`);
+      return false; // Prevent actual form submission for demonstration
     }
+    const usersData = {
+      name: name,
+      email: email,
+      age: age
+    };
+    users.push(usersData);
+    displayUsers();
+    document.getElementById("registrationForm").reset();
+    return false;
+
   </script>
 </head>
 <body>
