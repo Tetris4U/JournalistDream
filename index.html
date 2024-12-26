@@ -18,7 +18,7 @@
     <p>Tool Box</p>
     </div>
     <script>
-        let noButtonMade = true; // Declare the flag outside the function to preserve state
+          let noButtonMade = true; // Declare the flag outside the function to preserve state
 
 // Create buttons inside the menu
 function makeButtons() {
@@ -43,9 +43,6 @@ function makeButtons() {
         myMenu.appendChild(History);
         myMenu.appendChild(Account);
 
-        // Style buttons
-        styleButtons(Vlog, History, Account);
-
         // Add the hidden class initially to hide buttons
         Vlog.classList.add('hidden');
         History.classList.add('hidden');
@@ -59,17 +56,6 @@ function makeButtons() {
         History.onclick = () => window.location.replace("history.html");
         Account.onclick = () => window.location.replace("formindex.html");
     }
-}
-
-// Function to style buttons (DRY principle)
-function styleButtons(Vlog, History, Account) {
-    [Vlog, History, Account].forEach(button => {
-        button.style.color = "pink";
-        button.style.backgroundColor = "white";
-        button.style.borderRadius = "25px";
-        button.style.padding = "5px";
-        button.style.border = "none";
-    });
 }
 
 // Show buttons when mouse is over the menu
@@ -93,7 +79,10 @@ function hideButtons() {
 // Add event listeners for hover
 const menu = document.getElementById('menu');
 if (menu) {
-    menu.addEventListener('mouseover', showButtons);  // Show buttons on hover
+    menu.addEventListener('mouseover', function() {
+        makeButtons();  // Ensure buttons are created before showing them
+        showButtons();  // Show buttons when hovering
+    });
     menu.addEventListener('mouseout', hideButtons); // Hide buttons when mouse leaves
 }
 
