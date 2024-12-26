@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title> My Diary history</title>
+    <link rel=" stylesheet" href="history.css" />
  </head>
 <body>
 <h1> Your Writing History </h1>
@@ -16,11 +17,16 @@
     
     <script>
 <<<<<<< HEAD
+<<<<<<< HEAD
           // Retrieve the feelings array from localStorage, or initialize it as an empty array
     const feelingsArray = JSON.parse(localStorage.getItem("feelingsArray")) || [];
 =======
          const feelingsArray = JSON.parse(localStorage.getItem("feelingsArray")) || [];
 >>>>>>> 779e4e8 (done)
+=======
+         // Retrieve the feelings array from localStorage, or initialize it as an empty array
+    const feelingsArray = JSON.parse(localStorage.getItem("feelingsArray")) || [];
+>>>>>>> b502dff (add style)
 
 // Get the div where we want to display the feelings
 const feelingsContentDiv = document.getElementById("feelingsContent");
@@ -33,13 +39,19 @@ if (feelingsArray.length > 0) {
         const feelingPara = document.createElement("p");
         feelingPara.innerText = `${index + 1}. ${feeling}`;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b502dff (add style)
 
         // Add the "feelStyle" class to the feeling paragraph
         feelingPara.classList.add("feelStyle");
 
         // Append the feeling paragraph to the content div
+<<<<<<< HEAD
 =======
 >>>>>>> 779e4e8 (done)
+=======
+>>>>>>> b502dff (add style)
         feelingsContentDiv.appendChild(feelingPara);
     });
 } else {
@@ -47,9 +59,14 @@ if (feelingsArray.length > 0) {
     feelingsContentDiv.innerText = "No feelings data found.";
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 feelingsArray.forEach(document.createElement("div").class = "feelStyle");
    </script>
 =======
+=======
+feelingsArray.forEach(document.createElement("div").class = "feelStyle");
+
+>>>>>>> b502dff (add style)
     </script>
 >>>>>>> 779e4e8 (done)
 
