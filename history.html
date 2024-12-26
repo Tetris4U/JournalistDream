@@ -7,7 +7,24 @@
  </head>
 <body>
 <h1> Your Writing History </h1>
+<h1>History of Your Feelings</h1>
+    
+    <div id="feelingsDisplay">
+        <p><strong>Your Feelings:</strong></p>
+        <div id="feelingsContent"></div>
+    </div>
+    
+    <script>
+        // Retrieve the feelings from localStorage
+        const feelings = localStorage.getItem("feelings");
 
+        // If feelings exist in localStorage, display them
+        if (feelings) {
+            document.getElementById("feelingsContent").innerText = feelings;
+        } else {
+            document.getElementById("feelingsContent").innerText = "No feelings data found.";
+        }
+    </script>
 
 
 

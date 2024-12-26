@@ -117,15 +117,30 @@ submit.onclick = function() {
         </div>
     
     </div>
-    <button id="submit">Save</button>
+    <button id="submit">submit</button>
     <script>
         /* this can save data and send to other files*/
-        const submit = document.getElementById("submit");
-        function buttonPressed() {
-            const title = document.getElementById("title");
-            title.innerHTML = "Arianna Johnson Dreams";
-        }
-        submit.onclick = buttonPressed;
+   // Handle the "Save" button click to save feelings and redirect to the history page
+const submit = document.getElementById("submit");
+submit.onclick = function() {
+    const feelings = document.getElementById("feel").value;
+    if (feelings) {
+        // Save the feelings data in localStorage
+        localStorage.setItem("feelings", feelings);
+        
+    
+        alert("Your feelings have been saved!");
+
+        // Redirect to the history page
+        window.location.replace("history.html");
+    } else {
+       const theTitle =  document.getElementById("title").innerHTML = `Please enter your feelings before saving.`;
+
+    }
+    if(feelings == ""){
+        alert("Please enter your feelings before saving.");
+    }
+};
 
 
     </script>
