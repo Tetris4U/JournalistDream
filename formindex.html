@@ -4,43 +4,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="formindexStyle.css" />
-  <title>Registration Form</title>
+  <title id = "title">Registration Form</title>
   <script>
     // user list 
-    const users = [];
-      // JavaScript function to handle form submission and validation
-      function validateForm() {
-      // Get form values
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const age = document.getElementById("age").value;
+    const users = [];  // Array to store all users
 
-      // Simple validation checks
-      if (name === "" || email === "" || age === "") {
-        alert("Please fill in all fields.");
-        return false;
-      }
+// JavaScript function to handle form submission and validation
+function validateForm() {
+  // Get form values
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const age = document.getElementById("age").value;
+
+  // Simple validation checks
+  if (name === "" || email === "" || age === "") {
+    alert("Please fill in all fields.");
+    return false; // Prevent form submission
+  }
+
+  // Check if email format is correct
+  const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  if (!emailPattern.test(email)) {
+    alert("Please enter a valid email address.");
+    return false; // Prevent form submission
+  }
+
+  // Create a user object and add it to the users array
+  const usersData = {
+    name: name,
+    email: email,
+    age: age
+  };
+  users.push(usersData);
+
+  // Display the updated list of users
+  displayUsers();
+
+  // Display a welcome message for the last added user
+  document.getElementById("title").innerHTML = `Welcome, ${name}!`;
+
+  // Clear the form
+  document.getElementById("registrationForm").reset();
+
+  return false; // Prevent actual form submission (for demonstration)
+}
+
+// Function to display all saved users
+function displayUsers() {
+  const userList = document.getElementById("userList");
+  userList.innerHTML = ""; // Clear the current list
+
+  // Loop through all users and create a list item for each
+  users.forEach(user => {
+    const li = document.createElement("li");
+    li.textContent = `Name: ${user.name}, Email: ${user.email}, Age: ${user.age}`;
+    userList.appendChild(li);
+  });
+}
 
       // Check if email format is correct
-      const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-      if (!emailPattern.test(email)) {
-        alert("Please enter a valid email address.");
-        return false;
-      }
-
-      // If all validations pass, display data
-      alert(`Form submitted successfully!\nName: ${name}\nEmail: ${email}\nAge: ${age}`);
-      return false; // Prevent actual form submission for demonstration
-    }
-    const usersData = {
-      name: name,
-      email: email,
-      age: age
-    };
-    users.push(usersData);
-    displayUsers();
-    document.getElementById("registrationForm").reset();
-    return false;
+ 
 
   </script>
 </head>
