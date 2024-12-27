@@ -1,138 +1,111 @@
 <!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title> My Diary history</title>
+    <title> My Diary History</title>
     <link rel="stylesheet" href="historyStyle.css" />
- </head>
-<body id = "drop">
-<h1 id = "title"> Your History </h1>
-    <p1 id = "menu">menu</p1> 
-    <script>
-let buttonsCreated = false; // Flag to check if buttons are already created
+    
+</head>
+<body id="drop">
+<h1 id="title"> Your History </h1>
+<div id="menu">Tool Box</div>
 
-// Create buttons inside the menu
-function createButtons() {
-    if (!buttonsCreated) {
-        const myMenu = document.getElementById('menu');
+<script>
+    let buttonsCreated = false; // Flag to check if buttons are already created
 
-        // Create buttons
-        const Settings = document.createElement('button');
-        Settings.id = "settings";
-        const Vlog = document.createElement('button');
-        Vlog.id = "vlog";
-        const History = document.createElement('button');
-        History.id = "story";
-        const Account = document.createElement('button');
-        Account.id = "account";
+    function createButtons() {
+        if (!buttonsCreated) {
+            const myMenu = document.getElementById('menu');
 
-        // Set text for buttons
-        Settings.innerText = 'Settings';
-        Vlog.innerText = 'Vlog';
-        History.innerText = 'History';
-        Account.innerText = 'Account';
+            // Create buttons
+            const Settings = document.createElement('button');
+            Settings.id = "settings";
+            const Vlog = document.createElement('button');
+            Vlog.id = "vlog";
+            const History = document.createElement('button');
+            History.id = "story";
+            const Account = document.createElement('button');
+            Account.id = "account";
+            const Writing = document.createElement('button');  // Fixed typo
+            Writing.id = "writing";
 
-        // Add buttons to the menu
-        myMenu.appendChild(Vlog);
-        myMenu.appendChild(History);
-        myMenu.appendChild(Account);
-        myMenu.appendChild(Settings);
+            // Set text for buttons
+            Settings.innerText = 'Settings';
+            Vlog.innerText = 'Vlog';
+            History.innerText = 'History';
+            Account.innerText = 'Account';
+            Writing.innerText = 'Writing';
 
-        // Set flag to true to prevent recreating buttons
-        buttonsCreated = true;
+            // Add buttons to the menu
+            myMenu.appendChild(Vlog);
+            myMenu.appendChild(History);
+            myMenu.appendChild(Account);
+            myMenu.appendChild(Settings);
+            myMenu.appendChild(Writing); // Corrected appending
 
-        // Add click event listeners for the buttons
-        Vlog.onclick = () => window.location.replace("vlog.html");
-        History.onclick = () => window.location.replace("history.html");
-        Account.onclick = () => window.location.replace("formindex.html");
-        Settings.onclick = () => alert("Settings page is under construction.");
+            // Set flag to true to prevent recreating buttons
+            buttonsCreated = true;
+
+            // Add click event listeners for the buttons
+            Vlog.onclick = () => window.location.replace("vlog.html");
+            History.onclick = () => window.location.replace("history.html");
+            Account.onclick = () => window.location.replace("formindex.html");
+            Settings.onclick = () => alert("Settings page is under construction.");
+            Writing.onclick = () => window.location.replace("index.html");
+        }
     }
-}
 
-// Show buttons when mouse is over the menu
-function showButtons() {
-    const buttons = document.querySelectorAll('#menu button');
-    buttons.forEach(button => {
-        button.style.visibility = 'visible'; // Show the buttons
-    });
-}
+    // Show buttons when mouse is over the menu
+    function showButtons() {
+        const menu = document.getElementById('menu');
+        menu.style.visibility = 'visible';  // Show menu when hovering
+        const buttons = document.querySelectorAll('#menu button');
+        buttons.forEach(button => {
+            button.style.visibility = 'visible'; // Show the buttons
+        });
+    }
 
-// Hide buttons when mouse leaves the menu
-function hideButtons() {
-    const buttons = document.querySelectorAll('#menu button');
-    buttons.forEach(button => {
-        button.style.visibility = 'hidden'; // Hide the buttons
-    });
-}
+    // Hide buttons when mouse leaves the menu
+    function hideButtons() {
+        const buttons = document.querySelectorAll('#menu button');
+        buttons.forEach(button => {
+            button.style.visibility = 'hidden'; // Hide the buttons
+        });
+    }
 
-// Add event listeners for hover
-const menu = document.getElementById('menu');
-if (menu) {
-    menu.addEventListener('mouseover', function() {
-        createButtons();  // Create and show buttons on hover
-        showButtons();  // Show buttons when hovering
-    });
-    menu.addEventListener('mouseout', hideButtons); // Hide buttons when mouse leaves
-}
-
-// Handle the "Save" button click to save feelings
-const submit = document.getElementById("submit");
-submit.onclick = function() {
-    const feelings = document.getElementById("feel").value;
-    if (feelings) {
-        alert("Your feelings have been saved: " + feelings);
-        // Optionally, save it to localStorage or send it to a server
-        // localStorage.setItem("feelings", feelings);
-    } else {
-        alert("Please enter your feelings before saving.");
+    const menu = document.getElementById('menu');
+    if (menu) {
+        menu.addEventListener('mouseover', function() {
+            createButtons();  // Create and show buttons on hover
+            showButtons();  // Show buttons when hovering
+        });
+        menu.addEventListener('mouseout', hideButtons); // Hide buttons when mouse leaves
     }
 </script>
 
+<div id="feelingsDisplay">
+    <div id="feelingsContent"></div>
+</div>
 
-    <div id="feelingsDisplay">
-        
-        <div id="feelingsContent"></div>
-    </div>
-    
-    
-    <script>
-          // Retrieve the feelings array from localStorage, or initialize it as an empty array
-    
-       
-
-         // Retrieve the feelings array from localStorage, or initialize it as an empty array
+<script>
+    // Retrieve the feelings array from localStorage, or initialize it as an empty array
     const feelingsArray = JSON.parse(localStorage.getItem("feelingsArray")) || [];
 
-// Get the div where we want to display the feelings
-const feelingsContentDiv = document.getElementById("feelingsContent");
+    // Get the div where we want to display the feelings
+    const feelingsContentDiv = document.getElementById("feelingsContent");
 
-// Check if the feelingsArray is not empty
-if (feelingsArray.length > 0) {
-    // Loop through the array and display each feeling
-    feelingsArray.forEach((feeling, index) => {
-        // Create a paragraph for each feeling and append it to the content div
-        const feelingPara = document.createElement("p");
-        feelingPara.innerText = `${index + 1}. ${feeling}`;
-
-        // Add the "feelStyle" class to the feeling paragraph
-        feelingPara.classList.add("feelStyle");
-
-        // Append the feeling paragraph to the content div
-
-        feelingsContentDiv.appendChild(feelingPara);
-    });
-} else {
-    // If no feelings data is found, display a default message
-    feelingsContentDiv.innerText = "No feelings data found.";
-}
-feelingsArray.forEach(document.createElement("div").class = "feelStyle");
-   </script>
-    </script>
-
-
-
-
-
+    // Check if the feelingsArray is not empty
+    if (feelingsArray.length > 0) {
+        // Loop through the array and display each feeling
+        feelingsArray.forEach((feeling, index) => {
+            const feelingPara = document.createElement("p");
+            feelingPara.innerText = `${index + 1}. ${feeling}`;
+            feelingPara.classList.add("feelStyle");
+            feelingsContentDiv.appendChild(feelingPara);
+        });
+    } else {
+        feelingsContentDiv.innerText = "No feelings data found.";
+    }
+</script>
 </body>
 </html>
