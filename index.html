@@ -26,6 +26,8 @@ function createButtons() {
         const myMenu = document.getElementById('menu');
 
         // Create buttons
+        const Settings = document.createElement('button');
+        Settings.id = "settings";
         const Vlog = document.createElement('button');
         Vlog.id = "vlog";
         const History = document.createElement('button');
@@ -34,6 +36,7 @@ function createButtons() {
         Account.id = "account";
 
         // Set text for buttons
+        Settings.innerText = 'Settings';
         Vlog.innerText = 'Vlog';
         History.innerText = 'History';
         Account.innerText = 'Account';
@@ -42,6 +45,7 @@ function createButtons() {
         myMenu.appendChild(Vlog);
         myMenu.appendChild(History);
         myMenu.appendChild(Account);
+        myMenu.appendChild(Settings);
 
         // Set flag to true to prevent recreating buttons
         buttonsCreated = true;
@@ -50,6 +54,7 @@ function createButtons() {
         Vlog.onclick = () => window.location.replace("vlog.html");
         History.onclick = () => window.location.replace("history.html");
         Account.onclick = () => window.location.replace("formindex.html");
+        Settings.onclick = () => alert("Settings page is under construction.");
     }
 }
 
