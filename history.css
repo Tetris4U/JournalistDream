@@ -1,9 +1,48 @@
+#drop {
+    background-image: url("https://i.pinimg.com/736x/10/75/5a/10755ac4ba475bcc234f62e79b86a0f1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#clock {
+    color: pink;
+    font-size: 30px;
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+
 .feelStyle {
     padding: 10px;
     margin: 5px;
     background-color: #f0f0f0;
     border-radius: 5px;
     border: 1px solid #ccc;
-    font-family: Arial, sans-serif;
     font-size: 16px;
+    color: lightpink;
+    width: 140px; /* Fixed width */
+    height: 120px; /* Fixed height */
+    text-align: center; /* Center text */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Show ellipsis (...) if text overflows */
+    display: inline-block; /* Ensure it behaves like a button */
+    line-height: 60px; /* Vertically center text */
+}
+
+#title {
+    font-size: 50px;
+    font-weight: bold;
+    border-radius: 5px;
+    color: lightpink;
+    text-align: center;
+    background-color: white;
+}
+
+/* Hover effect on the buttons */
+.feelStyle:hover {
+    background-color: lightpink;
+    color: white;
 }

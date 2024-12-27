@@ -2,84 +2,178 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title> My Diary History</title>
+    <title>My Diary History</title>
     <link rel="stylesheet" href="historyStyle.css" />
-    
+    <script src="clock.js"></script>
+    <style>
+        /* Your CSS with visibility settings for the menu buttons */
+        #menu {
+            background-color: pink;
+            text-align: center;
+            color: hotpink;
+            font-size: 20px;
+            height: 60px;
+            width: 80px;
+            border-radius: 25%;
+            margin-top: 2px;
+            top: 32px;
+            left: 5px;
+            position: absolute;
+            transition-timing-function: ease-out;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        #menu:hover {
+            height: 200px;
+            width: 100px;
+            z-index:1;
+        }
+
+        #menu button {
+            display: none; /* Hide buttons by default */
+            background-color: white;
+            border-radius: 25px;
+            padding: 5px;
+            border: none;
+            margin: 5px;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #menu:hover button {
+            display: block; /* Show buttons when hovering over #menu */
+        }
+        .feelStyle {
+        padding: 10px;
+        margin: 5px;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        color: lightpink;
+        width: 90px;
+        height: 90px;
+        display: inline-block;
+        text-align: center;
+        position: relative;
+    }
+
+    .feelingsContainer {
+        display: inline-block;
+        margin: 10px;
+        text-align: center;
+        position: relative;  /* Ensures positioning of the checkbox */
+    }
+
+    .feelingsContainer button {
+        margin-top: 30px;
+        position: relative;
+        z-index: 2; /* Ensures the button stays on top of the checkbox */
+    }
+
+    /* Style for the checkbox */
+    .feelingsContainer input[type="checkbox"] {
+        position: absolute; /* Position checkbox behind the feeling button */
+        top: 0;
+        left: 0;
+        z-index: 1; /* Places the checkbox behind the button */
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;  /* Makes the checkbox semi-transparent */
+    }
+
+    .deleteButton {
+        padding: 10px;
+        margin: 10px;
+        background-color: #ff6347;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 200px;
+    }
+
+    .changedMindButton {
+        padding: 10px;
+        margin: 10px;
+        background-color: #87cefa;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 200px;
+        visibility: hidden; /* Initially hidden */
+    }
+
+    .editButton {
+        padding: 5px;
+        margin: 10px;
+        background-color: #32CD32;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 150px;
+    }
+
+    .modeButton {
+        padding: 10px;
+        margin: 10px;
+        background-color: #ffa500;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 200px;
+    }
+    </style>
 </head>
 <body id="drop">
 <h1 id="title"> Your History </h1>
 <div id="menu">Tool Box</div>
 <div id="clock"></div>
-<script>
-  function updateClock() {
-            const now = new Date(); // Get current date and time
-
-            // Get hours, minutes, and seconds
-            let hours = now.getHours();
-            let minutes = now.getMinutes();
-            let seconds = now.getSeconds();
-
-            // Determine AM or PM
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-
-            // Convert hours from 24-hour format to 12-hour format
-            hours = hours % 12;
-            hours = hours ? hours : 12; // Handle midnight (0 hours)
-            
-            // Add leading zeros if needed for minutes and seconds
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-            seconds = seconds < 10 ? '0' + seconds : seconds;
-
-            // Update the clock div with the new time
-            const clock = document.getElementById('clock');
-            clock.innerText = `${hours}:${minutes}:${seconds} ${ampm}`;
-        }
-
-        // Update the clock every second
-        setInterval(updateClock, 1000);
-
-        // Initial call to display the clock immediately
-        updateClock();
-</script>
-
 
 <script>
-    let buttonsCreated = false; // Flag to check if buttons are already created
+    let buttonsCreated = false;
+    let mode = 'read';  // Default mode: 'read', 'edit', 'delete'
+    let selectedFeelingIndex = null;  // Track the selected feeling for editing
+    let feelingsArray = JSON.parse(localStorage.getItem("feelingsArray")) || [];
 
+    // Create buttons in the menu
     function createButtons() {
         if (!buttonsCreated) {
             const myMenu = document.getElementById('menu');
-
-            // Create buttons
             const Settings = document.createElement('button');
-            Settings.id = "settings";
             const Vlog = document.createElement('button');
-            Vlog.id = "vlog";
             const History = document.createElement('button');
-            History.id = "story";
             const Account = document.createElement('button');
+            const Writing = document.createElement('button');
+            
+            Settings.id = "settings";
+            Vlog.id = "vlog";
+            History.id = "story";
             Account.id = "account";
-            const Writing = document.createElement('button');  // Fixed typo
             Writing.id = "writing";
 
-            // Set text for buttons
             Settings.innerText = 'Settings';
             Vlog.innerText = 'Vlog';
             History.innerText = 'History';
             Account.innerText = 'Account';
             Writing.innerText = 'Writing';
 
-            // Add buttons to the menu
             myMenu.appendChild(Vlog);
             myMenu.appendChild(History);
             myMenu.appendChild(Account);
             myMenu.appendChild(Settings);
-            myMenu.appendChild(Writing); // Corrected appending
+            myMenu.appendChild(Writing);
 
-            // Set flag to true to prevent recreating buttons
             buttonsCreated = true;
 
-            // Add click event listeners for the buttons
+            // Event listeners for buttons
             Vlog.onclick = () => window.location.replace("vlog.html");
             History.onclick = () => window.location.replace("history.html");
             Account.onclick = () => window.location.replace("formindex.html");
@@ -88,31 +182,102 @@
         }
     }
 
-    // Show buttons when mouse is over the menu
-    function showButtons() {
-        const menu = document.getElementById('menu');
-        menu.style.visibility = 'visible';  // Show menu when hovering
-        const buttons = document.querySelectorAll('#menu button');
-        buttons.forEach(button => {
-            button.style.visibility = 'visible'; // Show the buttons
-        });
-    }
+    // Call the display function when the page loads
+    window.onload = () => {
+        createButtons();
+        displayFeelings();  // Ensure feelings are displayed when the page loads
+    };
 
-    // Hide buttons when mouse leaves the menu
-    function hideButtons() {
-        const buttons = document.querySelectorAll('#menu button');
-        buttons.forEach(button => {
-            button.style.visibility = 'hidden'; // Hide the buttons
-        });
-    }
+    // Render the feelings in the container
+    function displayFeelings() {
+        const feelingsContentDiv = document.getElementById("feelingsContent");
+        feelingsContentDiv.innerHTML = "";  // Clear content
 
-    const menu = document.getElementById('menu');
-    if (menu) {
-        menu.addEventListener('mouseover', function() {
-            createButtons();  // Create and show buttons on hover
-            showButtons();  // Show buttons when hovering
-        });
-        menu.addEventListener('mouseout', hideButtons); // Hide buttons when mouse leaves
+        if (feelingsArray.length > 0) {
+            feelingsArray.forEach((feeling, index) => {
+                const feelingDiv = document.createElement("div");
+                feelingDiv.classList.add("feelingsContainer");
+
+                const feelingButton = document.createElement("button");
+                feelingButton.innerText = `${index + 1}. ${feeling}`;
+                feelingButton.classList.add("feelStyle");
+
+                if (mode === 'read') {
+                    // In read mode, clicking a feeling will just display it as read-only
+                    feelingButton.onclick = () => {
+                        alert(`You are reading the feeling: "${feeling}"`);
+                    };
+                } else if (mode === 'edit') {
+                    // In edit mode, clicking a feeling will allow for editing
+                    feelingButton.onclick = () => {
+                        selectedFeelingIndex = index;
+                        const confirmEdit = confirm(`Are you sure you want to edit this feeling: "${feeling}"?`);
+                        if (confirmEdit) {
+                            localStorage.setItem("editFeelingIndex", selectedFeelingIndex);
+                            window.location.href = "index.html";  // Redirect to the edit page
+                        }
+                    };
+                } else if (mode === 'delete') {
+                    // In delete mode, clicking will show a checkbox to delete
+                    const checkbox = document.createElement("input");
+                    checkbox.type = "checkbox";
+                    checkbox.classList.add("feelStyle");
+                    checkbox.setAttribute("data-index", index);
+                    feelingDiv.appendChild(checkbox);  // Append the checkbox behind the feeling button
+                }
+
+                feelingDiv.appendChild(feelingButton);
+                feelingsContentDiv.appendChild(feelingDiv);
+            });
+
+            // Add mode selection buttons
+            const modeButton = document.createElement("button");
+            modeButton.classList.add("modeButton");
+            if (mode === 'read') {
+                modeButton.innerText = 'Switch to Edit Mode';
+                modeButton.onclick = () => { mode = 'edit'; displayFeelings(); };
+            } else if (mode === 'edit') {
+                modeButton.innerText = 'Switch to Delete Mode';
+                modeButton.onclick = () => { mode = 'delete'; displayFeelings(); };
+            } else if (mode === 'delete') {
+                modeButton.innerText = 'Switch to Read Mode';
+                modeButton.onclick = () => { mode = 'read'; displayFeelings(); };
+            }
+
+            feelingsContentDiv.appendChild(modeButton);
+
+            // Add the "Changed Mind" button (visible only in delete or edit mode)
+            const changedMindButton = document.createElement("button");
+            changedMindButton.id = "changedMindButton";
+            changedMindButton.innerText = "Changed Mind";
+            changedMindButton.classList.add("changedMindButton");
+            changedMindButton.onclick = () => {
+                mode = 'read';  // Exit any mode
+                selectedFeelingIndex = null; // Reset selected feeling
+                displayFeelings();  // Re-render the feelings
+            };
+            feelingsContentDiv.appendChild(changedMindButton);
+
+            // Delete button logic (only visible in delete mode)
+            if (mode === 'delete') {
+                const deleteButton = document.createElement("button");
+                deleteButton.classList.add("deleteButton");
+                deleteButton.innerText = 'Delete Selected Feelings';
+                deleteButton.onclick = () => {
+                    const selectedCheckboxes = document.querySelectorAll("input[type='checkbox']:checked");
+                    selectedCheckboxes.forEach(checkbox => {
+                        const index = checkbox.getAttribute("data-index");
+                        feelingsArray.splice(index, 1);
+                    });
+                    localStorage.setItem("feelingsArray", JSON.stringify(feelingsArray));
+                    displayFeelings();  // Re-render after deletion
+                };
+                feelingsContentDiv.appendChild(deleteButton);
+            }
+
+        } else {
+            feelingsContentDiv.innerText = "No feelings data found.";
+        }
     }
 </script>
 
@@ -120,33 +285,5 @@
     <div id="feelingsContent"></div>
 </div>
 
-<script>
-   // Retrieve the feelings array from localStorage, or initialize it as an empty array
-const feelingsArray = JSON.parse(localStorage.getItem("feelingsArray")) || [];
-
-// Get the div where we want to display the feelings
-const feelingsContentDiv = document.getElementById("feelingsContent");
-
-// Check if the feelingsArray is not empty
-if (feelingsArray.length > 0) {
-    // Loop through the array and create a button for each feeling
-    feelingsArray.forEach((feeling, index) => {
-        const feelingButton = document.createElement("button");
-        feelingButton.innerText = `${index + 1}. ${feeling}`;  // Display feeling with its index
-        feelingButton.classList.add("feelStyle");  // Add a class for styling
-
-        // Optional: Add a click event for each button
-        feelingButton.onclick = () => {
-            alert(`You clicked on: ${feeling}`);
-        };
-
-        // Append the button to the content div
-        feelingsContentDiv.appendChild(feelingButton);
-    });
-} else {
-    feelingsContentDiv.innerText = "No feelings data found.";
-}
-
-</script>
 </body>
 </html>
