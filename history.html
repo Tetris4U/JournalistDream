@@ -121,24 +121,32 @@
 </div>
 
 <script>
-    // Retrieve the feelings array from localStorage, or initialize it as an empty array
-    const feelingsArray = JSON.parse(localStorage.getItem("feelingsArray")) || [];
+   // Retrieve the feelings array from localStorage, or initialize it as an empty array
+const feelingsArray = JSON.parse(localStorage.getItem("feelingsArray")) || [];
 
-    // Get the div where we want to display the feelings
-    const feelingsContentDiv = document.getElementById("feelingsContent");
+// Get the div where we want to display the feelings
+const feelingsContentDiv = document.getElementById("feelingsContent");
 
-    // Check if the feelingsArray is not empty
-    if (feelingsArray.length > 0) {
-        // Loop through the array and display each feeling
-        feelingsArray.forEach((feeling, index) => {
-            const feelingPara = document.createElement("p");
-            feelingPara.innerText = `${index + 1}. ${feeling}`;
-            feelingPara.classList.add("feelStyle");
-            feelingsContentDiv.appendChild(feelingPara);
-        });
-    } else {
-        feelingsContentDiv.innerText = "No feelings data found.";
-    }
+// Check if the feelingsArray is not empty
+if (feelingsArray.length > 0) {
+    // Loop through the array and create a button for each feeling
+    feelingsArray.forEach((feeling, index) => {
+        const feelingButton = document.createElement("button");
+        feelingButton.innerText = `${index + 1}. ${feeling}`;  // Display feeling with its index
+        feelingButton.classList.add("feelStyle");  // Add a class for styling
+
+        // Optional: Add a click event for each button
+        feelingButton.onclick = () => {
+            alert(`You clicked on: ${feeling}`);
+        };
+
+        // Append the button to the content div
+        feelingsContentDiv.appendChild(feelingButton);
+    });
+} else {
+    feelingsContentDiv.innerText = "No feelings data found.";
+}
+
 </script>
 </body>
 </html>

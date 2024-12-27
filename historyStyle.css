@@ -48,6 +48,14 @@
     border: 1px solid #ccc;
     font-size: 16px;
     color: lightpink;
+    width: 140px; /* Fixed width */
+    height: 120px; /* Fixed height */
+    text-align: center; /* Center text */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Show ellipsis (...) if text overflows */
+    display: inline-block; /* Ensure it behaves like a button */
+    line-height: 60px; /* Vertically center text */
     
 
 }
@@ -58,4 +66,8 @@
     color: lightpink;
     text-align: center;
     background-color: white;
+}
+.feelStyle:hover{
+    background-color: lightpink;
+    color: white;
 }
