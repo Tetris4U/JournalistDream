@@ -40,12 +40,14 @@ body{
     color: white;
     padding: 10px;
     width: 100px;
-    margin: auto;
+    position: absolute;
+    top: 600px;
 }
 #submit:hover{
     background-color: white;
     color: plum;
     border-color: plum;
+   
 }
 #title{
     color: plum; 
