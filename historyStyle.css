@@ -4,6 +4,25 @@
     background-repeat: no-repeat;
 
 }
+#menu{
+    background-color:pink;
+    text-align: center;
+    color: hotpink;
+    font-size: 20px;
+    height:60px;
+    width: 80px;
+    border-radius: 25%;
+    margin-top: 2px;
+    top: 32px;
+    left: 5px;
+    position: absolute;
+    transition-timing-function: ease-out;
+
+}
+#menu:hover{
+ height: 200px;
+ width: 100px;
+}
 .feelStyle {
     padding: 10px;
     margin: 5px;
@@ -11,13 +30,15 @@
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 16px;
-    height: 20px;
-    width: 20px;
+    color: lightpink;
+    
 
 }
 #title{
-    font-size: 20px;
+    font-size: 50px;
     font-weight: bold;
-    color: white;
-    background-color: pink;
+    border-radius: 5px;
+    color: lightpink;
+    text-align: center;
+    background-color: white;
 }
