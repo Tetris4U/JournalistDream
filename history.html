@@ -6,8 +6,51 @@
     <link rel="stylesheet" href="historyStyle.css" />
     <script src="clock.js"></script>
     <style>
+    .menuButton{
+    background-color: white;
+    border-radius: 25px;
+    padding: 5px;
+    border: none;
+    margin: 5px;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    visibility: hidden; 
+}
+        #menu{
+    background-color:pink;
+    text-align: center;
+    color: hotpink;
+    font-size: 20px;
+    height:60px;
+    width: 80px;
+    border-radius: 25%;
+    margin-top: 2px;
+    top: 32px;
+    left: 5px;
+    position: absolute;
+    transition-timing-function: ease-out;
+
+}
+ #menu:hover{
+ height: 200px;
+ width: 100px;
+
+}
+#history{
+ color: pink;
+ padding: 30px;
+ border-radius: 25%;
+ background-color: white;
+ font-size: 15px;
+ border-style: none;
+ right: 10px;
+ top: 100px;
+ position: absolute; 
+}
+#history:hover{
+background-color:hotpink;
+}
         /* Your CSS with visibility settings for the menu buttons */
-        #menu {
+       /* #menu {
             background-color: pink;
             text-align: center;
             color: hotpink;
@@ -31,7 +74,7 @@
         }
 
         #menu button {
-            display: none; /* Hide buttons by default */
+            display: none; /* Hide buttons by default 
             background-color: white;
             border-radius: 25px;
             padding: 5px;
@@ -41,8 +84,11 @@
         }
 
         #menu:hover button {
-            display: block; /* Show buttons when hovering over #menu */
+            display: block; 
+            /* Show buttons when hovering over #menu 
+            
         }
+        */
         .feelStyle {
         padding: 10px;
         margin: 5px;
@@ -177,9 +223,71 @@
     let mode = 'read';  // Default mode: 'read', 'edit', 'delete'
     let selectedFeelingIndex = null;  // Track the selected feeling for editing
     let feelingsArray = JSON.parse(localStorage.getItem("feelingsArray")) || [];
+    function createButtons() {
+    if (!buttonsCreated) {
+        const myMenu = document.getElementById('menu');
+
+        // Create buttons
+        const Settings = document.createElement('button');
+        Settings.id = "settings";
+        const Vlog = document.createElement('button');
+        Vlog.id = "vlog";
+        const Account = document.createElement('button');
+        Account.id = "account";
+        const Write = document.createElement('button');
+        Write.id = "write";
+
+        // Set text for buttons
+        Settings.innerText = 'Settings';
+        Vlog.innerText = 'Vlog';
+        Account.innerText = 'Account';
+        Write.innerText = 'Write';
+
+        // Add buttons to the menu
+        myMenu.appendChild(Vlog);
+        myMenu.appendChild(Account);
+        myMenu.appendChild(Settings);
+        myMenu.appendChild(Write);
+
+        // Set flag to true to prevent recreating buttons
+        buttonsCreated = true;
+
+        // Add click event listeners for the buttons
+        Vlog.onclick = () => alert("Settings page is under construction.");
+        Account.onclick = () =>alert("Settings page is under construction.");
+        Write.onclick = () => window.location.replace("index.html");
+        Settings.onclick = () => alert("Settings page is under construction.");
+    }
+}
+
+// Show buttons when mouse is over the menu
+function showButtons() {
+    const buttons = document.querySelectorAll('#menu button');
+    buttons.forEach(button => {
+        button.style.visibility = 'visible'; // Show the buttons
+    });
+}
+
+// Hide buttons when mouse leaves the menu
+function hideButtons() {
+    const buttons = document.querySelectorAll('#menu button');
+    buttons.forEach(button => {
+        button.style.visibility = 'hidden'; // Hide the buttons
+    });
+}
+
+// Add event listeners for hover
+const menu = document.getElementById('menu');
+if (menu) {
+    menu.addEventListener('mouseover', function() {
+        createButtons();  // Create and show buttons on hover
+        showButtons();  // Show buttons when hovering
+    });
+    menu.addEventListener('mouseout', hideButtons); // Hide buttons when mouse leaves
+}
 
     // Create buttons in the menu
-    function createButtons() {
+   /* function createButtons() {
         if (!buttonsCreated) {
             const myMenu = document.getElementById('menu');
             const Settings = document.createElement('button');
@@ -216,7 +324,7 @@
             Writing.onclick = () => window.location.replace("index.html");
         }
     }
-
+*/
     // Call the display function when the page loads
     window.onload = () => {
         createButtons();
@@ -269,11 +377,17 @@
             const modeButton = document.createElement("button");
             modeButton.classList.add("modeButton");
             if (mode === 'read') {
-                modeButton.innerText = 'Switch to Edit Mode';
-                modeButton.onclick = () => { mode = 'edit'; displayFeelings(); };
+                modeButton.innerText = 'Journal Mode';
+                modeButton.onclick = () => { 
+                    mode = 'edit'; displayFeelings();
+                 };
             } else if (mode === 'edit') {
-                modeButton.innerText = 'Switch to Delete Mode';
-                modeButton.onclick = () => { mode = 'delete'; displayFeelings(); };
+                modeButton.innerText = 'Edit Mode';
+                modeButton.onclick = () => { 
+                    
+
+                 mode = 'delete'; displayFeelings();
+                 };
             } else if (mode === 'delete') {
                 modeButton.innerText = 'Switch to Read Mode';
                 modeButton.onclick = () => { mode = 'read'; displayFeelings(); };
