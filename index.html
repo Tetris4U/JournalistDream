@@ -122,35 +122,59 @@ submit.onclick = function() {
     </div>
     <button type ="button" id="submit">submit</button>
     <script>
+function getQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+        name: params.get("name"),
+        email: params.get("email"),
+        age: params.get("age"),
+        password: params.get("password")
+    };
+}
 
-           let feelingsArray = JSON.parse(localStorage.getItem("feelingsArray")) || [];
-
-// Handle the "Save" button click to save feelings data
-const submitButton = document.getElementById("submit");
-submitButton.onclick = function() {
-    const feelings = document.getElementById("feel").value;
-
-    if (feelings) {
-        // Push the new feeling to the array
-        feelingsArray.push(feelings);
-
-        // Save the updated array in localStorage
-        localStorage.setItem("feelingsArray", JSON.stringify(feelingsArray));
-
-        // Optionally show a confirmation message
-        alert("Your feelings have been saved!");
-
-        // Clear the textarea for new input
-        document.getElementById("feel").value = '';
-
-        // Redirect to the history page to view all feelings
-        window.location.replace("history.html");
+function displayUsersInfo() {
+    const userInfo = getQueryParams();
+    
+    // Corrected to use userInfo, not savedUser
+    if (userInfo.name && userInfo.email && userInfo.age && userInfo.password) {
+        // Use backticks for template literals, not single quotes
+        document.getElementById("title").textContent = `Welcome, ${userInfo.name}!`;
     } else {
-        alert("Please enter your feelings before saving.");
+        document.getElementById("title").textContent = "Welcome to My Diary!";
     }
-};
+}
+
+// Call the function to display user information when the page loads
+window.onload = displayUsersInfo;
+
+          
     </script>
-   
+   <script>
+function getQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+        name: params.get("name"),
+        email: params.get("email"),
+        age: params.get("age"),
+        password: params.get("password")
+    };
+}
+
+function displayUsersInfo() {
+    const userInfo = getQueryParams();
+    if (userInfo.name && userInfo.email && userInfo.age && userInfo.password) {
+        document.getElementById("title").textContent = `Welcome, ${userInfo.name}!`;
+    } else {
+        document.getElementById("title").textContent = "Welcome to My Diary!";
+    }
+}
+
+// Call the function to display user information when the page loads
+window.onload = displayUsersInfo;
+
+
+
+   </script>
 
 </body>
 
