@@ -25,16 +25,73 @@ function createButtons() {
     if (!buttonsCreated) {
         const myMenu = document.getElementById('menu');
 
-        // Create buttons
+        // setting button 
         const Settings = document.createElement('button');
         Settings.id = "settings";
+        Settings.style.borderStyle = "none";
+        Settings.style.padding = "7px";
+        Settings.style.borderRadius = "25px";
+        Settings.style.color = "pink";
+        Settings.addEventListener('mouseenter', () =>{
+            Settings.style.backgroundColor = "hotpink";
+            Settings.style.color = "white";
+        });
+        Settings.addEventListener('mouseleave', () =>{
+            Settings.style.backgroundColor = "white";
+            Settings.style.color = "black";
+        });
+        // vlog button
         const Vlog = document.createElement('button');
         Vlog.id = "vlog";
+
+        Vlog.style.borderStyle = "none";
+        Vlog.style.padding = "7px";
+        Vlog.style.borderRadius = "25px";
+        Vlog.style.color = "pink";
+        Vlog.addEventListener('mouseenter', () =>{
+            Vlog.style.backgroundColor = "hotpink";
+            Vlog.style.color = "white";
+        });
+
+         Vlog.addEventListener('mouseleave', () =>{
+         Vlog.style.backgroundColor = "white";
+        Vlog.style.color = "black";
+        });
+        // history button 
         const History = document.createElement('button');
         History.id = "story";
+        History.style.borderStyle = "none";
+        History.style.padding = "7px";
+        History.style.borderRadius = "25px";
+        History.style.color = "pink";
+        History.addEventListener('mouseenter', () =>{
+            History.style.backgroundColor = "hotpink";
+            History.style.color = "white";
+        });
+
+         History.addEventListener('mouseleave', () =>{
+         History.style.backgroundColor = "white";
+         History.style.color = "black";
+        });
+
+
+      // account button 
+
         const Account = document.createElement('button');
         Account.id = "account";
+        Account.style.borderStyle = "none";
+        Account.style.padding = "7px";
+        Account.style.borderRadius = "25px";
+        Account.style.color = "pink";
+        Account.addEventListener('mouseenter', () =>{
+            Account.style.backgroundColor = "hotpink";
+            Account.style.color = "white";
+        });
 
+         Account.addEventListener('mouseleave', () =>{
+         Account.style.backgroundColor = "white";
+         Account.style.color = "black";
+        });
         // Set text for buttons
         Settings.innerText = 'Settings';
         Vlog.innerText = 'Vlog';
@@ -112,7 +169,7 @@ submit.onclick = function() {
         <div>
             <div id="box">
             <!-- missing label-->
-             <label for = "feel" id = "labelForFeelings">Your Feelings matter</label>
+             <label for = "feel" id = "labelForFeelings"></label>
              <textarea  id = "feel" name ="feel"></textarea>
                 
             </div>
@@ -151,6 +208,7 @@ submitButton.onclick = function() {
 };
 
    </script>
+  
 
 </body>
 
