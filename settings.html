@@ -75,8 +75,11 @@
         .image-container:hover #overlay {
             opacity: 1; /* Show overlay when the image container is hovered */
         }
+        #homePage{
+            color: rgb(10, 223, 10);
+        }
 
-        #title, #titlemusic, #Ai {
+        #title, #titlemusic, #Ai, #homePage {
             position: absolute;
             top: 10%;
             font-size: 40px;
@@ -120,6 +123,11 @@
             <div id = "overlay"></div>
             <p id ="Ai">Asa AI</p>
         </div>
+        <div class = "image-container">
+            <img src = "https://www.pixel4k.com/wp-content/uploads/2024/01/lofi-vibes-2024-4k-3840x2160_1705009067-768x430.jpg" alt = "home" id = "home">
+            <div id = "overlay"></div>
+            <p id = "homePage"> Home Page</p>
+        </div>
 
         <!-- Image container for the second image -->
         <div class="image-container">
@@ -127,6 +135,7 @@
             <div id="overlay"></div>
             <p id="titlemusic">Music</p>
         </div>
+        
     </div>
 <script>
 
