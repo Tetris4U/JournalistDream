@@ -1,27 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fire Smoke Effect</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap" rel="stylesheet">
-  <style>
-    /* General Body and Background */
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap" rel="stylesheet">
+    <script src="settings.js"></script>
+    <style>
+      html, body{
+        height: 100%;
+        margin: 0;
+        padding: 0;
 
-    body {
-      background-image: url("https://t4.ftcdn.net/jpg/05/96/88/71/360_F_596887164_XK8gbrIXT2pOYia7Dn3NZdw2ujsmul55.jpg");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      overflow: hidden;
-    }
-
-    /* Smoke Container */
+      }
+         /* Smoke Container */
     .smoke-container {
       position: fixed;
       bottom: 0;
@@ -68,68 +62,96 @@
         opacity: 0;
       }
     }
+    
 
     /* Page Title */
-    #pageTitle {
-      font-family: "Rubik Bubbles";
-      color: black;
-      text-align: center;
-      margin-top: 20px;
-      font-size: 500%;
-      transition: transform 1s;
-    }
-
+    
     #pageTitle:hover {
       transform: rotate(360deg);
       transition: 1s;
     }
+      
+      body{
+        background-image: url("https://t4.ftcdn.net/jpg/05/96/88/71/360_F_596887164_XK8gbrIXT2pOYia7Dn3NZdw2ujsmul55.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+        #pageTitle {
+            font-family: "Rubik Bubbles";
+            color: black;
+            text-align: center;
+            margin-top: 20px;
+            font-size:500%;
+            
 
-    /* Setting Grid */
-    #settingGrid {
-      border-radius: 10%;
-      display: flex;
-      flex-direction: row;
-      background-color: black;
-      padding: 20px;
-      height: 600px;
-      width: 100%;
-      margin: 20px auto;
-      z-index: 10;
-    }
+        }
+        #Ai{
+            color: rgb(238, 255, 0)
+        }
 
-    .image-container {
-      position: relative;
-      display: inline-block;
-      margin: 10px;
-    }
+        #settingGrid {
+            border-radius: 10%;
+            display: flex;
+            flex-direction: row;
+            background-color: black;
+            padding: 20px;
+            height: 600px;
+            width: 1000;
+            
+        }
 
-    img {
-      border-radius: 25%;
-      height: 200px;
-      width: 280px;
-      margin: 10px;
-      display: block;
-    }
+        .image-container {
+            position: relative;
+            display: inline-block;
+            margin: 10px;
+        }
 
-    #overlay {
-      border-radius: 25%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 200px;
-      width: 280px;
-      background-color: rgba(208, 32, 243, 0.5);
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
+        img {
+            border-radius: 25%;
+            height: 200px;
+            width: 280px;
+            margin: 10px;
+            display: block; /* Remove inline spacing */
+        }
 
-    .image-container:hover #overlay {
-      opacity: 1;
-    }
-  </style>
+        #overlay {
+           border-radius: 25%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 200px;
+            width: 280px;
+            background-color: rgba(208, 32, 243, 0.5); /* Blue color with transparency */
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .image-container:hover #overlay {
+            opacity: 1; /* Show overlay when the image container is hovered */
+        }
+        #homePage{
+            color: rgb(10, 223, 10);
+        }
+
+        #title, #titlemusic, #Ai, #homePage {
+            position: absolute;
+            top: 10%;
+            font-size: 40px;
+            text-align: center;
+            width: 100%;
+        }
+
+        #title {
+            color: blue;
+        }
+
+        #titlemusic {
+            color: rgb(3, 14, 24);
+        }
+    </style>
 </head>
-<body>
-  <audio id = "audio" loop preload="auto">
+<audio id = "audio" loop preload="auto">
     <source src="https://mail.google.com/mail/u/0?ui=2&ik=1a477a9ed1&attid=0.1&permmsgid=msg-a:r-4418463850341003209&view=att&disp=safe&realattid=f_m65b4osh0&zw"type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
@@ -140,7 +162,7 @@
     };
     
   </script>
-  <!-- Smoke Container -->
+<body id = "fullPage">
   <div class="smoke-container">
     <div class="smoke" style="left: 20%; animation-delay: 0s;"></div>
     <div class="smoke" style="left: 40%; animation-delay: 2s;"></div>
@@ -148,31 +170,39 @@
     <div class="smoke" style="left: 80%; animation-delay: 6s;"></div>
   </div>
 
-  <!-- Page Title -->
-  <h1 id="pageTitle">Settings</h1>
+    <h1 id="pageTitle">Setting</h1>
 
-  <!-- Settings Grid -->
-  <div id="settingGrid">
-    <div class="image-container">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrMM7rzmd_MpSOkWd_GlB3y0qJCHEn3v040ZYTpEo9yzIpHviNsrqj4JHnc7D9dG4vFQc&usqp=CAU" alt="man">
-      <div id="overlay"></div>
-      <p>Theme</p>
+    <div id="settingGrid">
+        <!-- Image container for the first image -->
+        <div class="image-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrMM7rzmd_MpSOkWd_GlB3y0qJCHEn3v040ZYTpEo9yzIpHviNsrqj4JHnc7D9dG4vFQc&usqp=CAU" alt="man" id = "man">
+            <div id="overlay"></div>
+            <p id="title">Theme</p>
+        </div>
+        <div class = "image-container">
+            <img src = "https://lh3.googleusercontent.com/gjKX7s3pITEBkA0_6B73Q9zP7JfT7yGPkiFtnuuPnnxqLP566ZhSU8pLnQirLq3BdbcatyMQzUu-VFMbG4osRe9Rkhk=s1280-w1280-h800" alt = "mushroom" id = "mushroom">
+            <div id = "overlay"></div>
+            <p id ="Ai">Asa AI</p>
+        </div>
+        <div class = "image-container">
+            <img src = "https://www.pixel4k.com/wp-content/uploads/2024/01/lofi-vibes-2024-4k-3840x2160_1705009067-768x430.jpg" alt = "home" id = "home">
+            <div id = "overlay"></div>
+            <p id = "homePage"> Home Page</p>
+        </div>
+
+        <!-- Image container for the second image -->
+        <div class="image-container">
+            <img src="https://img.freepik.com/premium-vector/earphones-3d-rendering-headphones-isolated-coloring-background-headset-wireless-digital-device_613585-38375.jpg" alt="music" id="music">
+            <div id="overlay"></div>
+            <p id="titlemusic">Music</p>
+        </div>
+        
     </div>
-    <div class="image-container">
-      <img src="https://lh3.googleusercontent.com/gjKX7s3pITEBkA0_6B73Q9zP7JfT7yGPkiFtnuuPnnxqLP566ZhSU8pLnQirLq3BdbcatyMQzUu-VFMbG4osRe9Rkhk=s1280-w1280-h800" alt="mushroom">
-      <div id="overlay"></div>
-      <p>Asa AI</p>
-    </div>
-    <div class="image-container">
-      <img src="https://www.pixel4k.com/wp-content/uploads/2024/01/lofi-vibes-2024-4k-3840x2160_1705009067-768x430.jpg" alt="home">
-      <div id="overlay"></div>
-      <p>Home Page</p>
-    </div>
-    <div class="image-container">
-      <img src="https://img.freepik.com/premium-vector/earphones-3d-rendering-headphones-isolated-coloring-background-headset-wireless-digital-device_613585-38375.jpg" alt="music">
-      <div id="overlay"></div>
-      <p>Music</p>
-    </div>
-  </div>
+<script>
+
+
+
+
+</script>
 </body>
 </html>
