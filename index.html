@@ -7,9 +7,22 @@
 
 <link rel=" stylesheet" href="StyleSheet1.css" />  
  <script src ="clock.js"></script>
- </head>
+</head>
 <body id = "firstPage">
     <h1 id="title">Your Dream</h1>
+   
+      <audio id = "audio" loop preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2024/05/27/audio_0a4c3583a4.mp3?filename=-212393.mp3"type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <script>
+        window.onload = function() {
+          var audio = document.getElementById('audio');
+          audio.play(); // Start playing the audio immediately
+        };
+        
+      </script>
+      
    
 </div>
     </div>
@@ -17,6 +30,11 @@
     <div id = menu>
     <p>Tool Box</p>
     </div>
+    <audio id="audio" preload="auto">
+        <source src="https://soundcloud.com/nfrealmusic/chasing-demo-feat-mikayla?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+  
     <script>
        // Flag to check if buttons are already created
 let buttonsCreated = false;
@@ -145,6 +163,8 @@ if (menu) {
 const submit = document.getElementById("submit");
 submit.onclick = function() {
     const feelings = document.getElementById("feel").value;
+    var audio = document.getElementById('audio');
+    audio.play()
     if (feelings) {
         alert("Your feelings have been saved: " + feelings);
         // Optionally, save it to localStorage or send it to a server
