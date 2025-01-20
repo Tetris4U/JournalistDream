@@ -18,8 +18,8 @@
     <p>Tool Box</p>
     </div>
     <script>
-      let buttonsCreated = false; // Flag to check if buttons are already created
-
+       // Flag to check if buttons are already created
+let buttonsCreated = false;
 // Create buttons inside the menu
 function createButtons() {
     if (!buttonsCreated) {
@@ -111,7 +111,7 @@ function createButtons() {
         Vlog.onclick = () => alert("Vlog page is under construction. Give me some time, please");
         History.onclick = () => window.location.replace("history.html");
         Account.onclick = () => alert("Account page is under construction. Give me some time, please");
-        Settings.onclick = () => alert("Settings page is under construction.  Give me some time, please");
+        Settings.onclick = () => window.location.replace("settings.html");
     }
 }
 
