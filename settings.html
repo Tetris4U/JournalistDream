@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap" rel="stylesheet">
+    <script src="settings.js"></script>
+    <style>
+      html, body{
+        height: 100%;
+        margin: 0;
+        padding: 0;
+
+      }
+      
+      body{
+        background-image: url("https://t4.ftcdn.net/jpg/05/96/88/71/360_F_596887164_XK8gbrIXT2pOYia7Dn3NZdw2ujsmul55.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+        #pageTitle {
+            font-family: "Rubik Bubbles";
+            color: black;
+            text-align: center;
+            margin-top: 20px;
+            font-size:xx-large;
+            
+
+        }
+
+        #settingGrid {
+            border-radius: 10%;
+            display: flex;
+            flex-direction: row;
+            background-color: black;
+            padding: 20px;
+            
+        }
+
+        .image-container {
+            position: relative;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        img {
+            border-radius: 25%;
+            height: 200px;
+            width: 280px;
+            margin: 10px;
+            display: block; /* Remove inline spacing */
+        }
+
+        #overlay {
+           border-radius: 25%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 200px;
+            width: 280px;
+            background-color: rgba(208, 32, 243, 0.5); /* Blue color with transparency */
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .image-container:hover #overlay {
+            opacity: 1; /* Show overlay when the image container is hovered */
+        }
+
+        #title, #titlemusic {
+            position: absolute;
+            top: 10%;
+            color: white;
+            font-size: 40px;
+            text-align: center;
+            width: 100%;
+        }
+
+        #title {
+            color: blue;
+        }
+
+        #titlemusic {
+            color: rgb(3, 14, 24);
+        }
+    </style>
+</head>
+<body id = "fullPage">
+
+    <h1 id="pageTitle">Setting</h1>
+
+    <div id="settingGrid">
+        <!-- Image container for the first image -->
+        <div class="image-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrMM7rzmd_MpSOkWd_GlB3y0qJCHEn3v040ZYTpEo9yzIpHviNsrqj4JHnc7D9dG4vFQc&usqp=CAU" alt="man" id = "man">
+            <div id="overlay"></div>
+            <p id="title">Theme</p>
+        </div>
+
+        <!-- Image container for the second image -->
+        <div class="image-container">
+            <img src="https://img.freepik.com/premium-vector/earphones-3d-rendering-headphones-isolated-coloring-background-headset-wireless-digital-device_613585-38375.jpg" alt="music" id="music">
+            <div id="overlay"></div>
+            <p id="titlemusic">Music</p>
+        </div>
+    </div>
+<script>
+
+
+
+
+</script>
+</body>
+</html>
+
