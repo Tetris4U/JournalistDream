@@ -185,6 +185,64 @@
             <div id="overlay"></div>
             <p id="title">Theme</p>
         </div>
+        <script>
+          const theme = document.getElementsByClassName('image-container')[0];
+theme.addEventListener('click', () => {
+  // Get the container by its ID
+  const div = document.getElementById('settingGrid');
+
+  if (div) {
+    // Remove all child elements from the div
+    while (div.firstChild) {
+      div.removeChild(div.firstChild);
+    }
+
+    // Reset all inline styles
+    div.removeAttribute('style');
+
+    // Create a label and input for the search bar
+    const label = document.createElement('label');
+    label.textContent = 'Search for a theme:';
+    // Ensures the label takes full width
+    label.style.width = '200px'; // Set label width
+    label.style.height = '50px'; // Set label height
+    label.style.color ='green'; // Optional: Add a background color for visibility
+    label.style.textAlign = 'center'; // Center the text inside the label
+    label.style.lineHeight = '50px'; // Align the text vertically in the label
+
+    const search = document.createElement('input');
+    search.style.width = '400px';
+    search.style.height= ' 30px';
+    search.style.borderRadius = "18%";
+    search.style.borderColor = "green";
+// Set input width
+    search.setAttribute('type', 'text');
+    search.setAttribute('id', 'themeSearch');
+
+    // Append the label and search input to the div
+    div.appendChild(label);
+    div.appendChild(search);
+    const button = document.createElement('button');
+    button.textContent = 'Done';
+    button.style.width = '60px';
+    button.style.height = '20px';
+    button.style.margin = '10px';
+    button.style.hover = 'green';
+    button.addEventListener('click', () =>{
+      window.location.href = "settings.html";
+    })
+    div.appendChild(button);
+      
+  
+  }
+});
+
+    
+         
+
+          
+
+        </script>
         <div class = "image-container">
             <img src = "https://lh3.googleusercontent.com/gjKX7s3pITEBkA0_6B73Q9zP7JfT7yGPkiFtnuuPnnxqLP566ZhSU8pLnQirLq3BdbcatyMQzUu-VFMbG4osRe9Rkhk=s1280-w1280-h800" alt = "mushroom" id = "mushroom">
             <div id = "overlay"></div>
