@@ -7,7 +7,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap" rel="stylesheet">
-    <script src="settings.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+</head>
+    <script src = "love.js" defer></script>
+    <div id="root"></div>
     <style>
       html, body{
         height: 100%;
@@ -151,6 +155,7 @@
         }
     </style>
 </head>
+
 <audio id = "audio" loop preload="auto">
     <source src="https://mail.google.com/mail/u/0?ui=2&ik=1a477a9ed1&attid=0.1&permmsgid=msg-a:r-4418463850341003209&view=att&disp=safe&realattid=f_m65b4osh0&zw"type="audio/mpeg">
     Your browser does not support the audio element.
@@ -173,6 +178,7 @@
     <h1 id="pageTitle">Setting</h1>
 
     <div id="settingGrid">
+        
         <!-- Image container for the first image -->
         <div class="image-container">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrMM7rzmd_MpSOkWd_GlB3y0qJCHEn3v040ZYTpEo9yzIpHviNsrqj4JHnc7D9dG4vFQc&usqp=CAU" alt="man" id = "man">
@@ -189,6 +195,13 @@
             <div id = "overlay"></div>
             <p id = "homePage"> Home Page</p>
         </div>
+        <script>
+         const image = document.getElementsByClassName('image-container')[2];
+          image.addEventListener('click', () => {
+              window.location.href = "index.html";
+          });
+
+        </script>
 
         <!-- Image container for the second image -->
         <div class="image-container">
@@ -199,6 +212,7 @@
         
     </div>
 <script>
+    
 
 
 
