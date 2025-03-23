@@ -1,0 +1,49 @@
+body{
+    background-image: url("https://i.etsystatic.com/14740891/r/il/f3a254/1974055210/il_794xN.1974055210_2dhg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+
+}
+#title{
+    text-align: center;
+    font-size: 45px;
+
+}
+#lastName, #firstName, #email, #phone, #password, #confirmPassword, #age{ 
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc; 
+    padding: 5px;
+    margin: 10px;
+    background-color: black;
+    color: white;
+}
+#submit{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+}
+label{
+    color: white;
+    font-size: 20px;
+    margin-right: 10px;
+}
+form{
+    text-align: center;
+    margin-top: 20px;
+    background-color: rgba(4, 0, 22, 0.63);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
